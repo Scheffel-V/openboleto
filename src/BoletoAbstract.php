@@ -58,6 +58,8 @@ abstract class BoletoAbstract
      */
     protected $codigoBanco;
 
+    protected $nossoNumero;
+
     /**
      * Moeda
      * @var int
@@ -1195,12 +1197,14 @@ abstract class BoletoAbstract
     /**
      * Mostra exception ao erroneamente tentar setar o nosso número
      *
-     * @throws Exception
-     * @return never-return
+     * PATCH: Quero poder setar manualmente o Nosso Numero para o Banco Sicredi,
+     * já que o Banco retorna o valor correto e a biblioteca se mostrou incapaz de fazê-lo corretamente.
+     *
      */
-    public final function setNossoNumero()
+    public final function setNossoNumero($nossoNumero)
     {
-        throw new Exception('Não é possível definir o nosso número diretamente. Utilize o método setSequencial.');
+        //throw new Exception('Não é possível definir o nosso número diretamente. Utilize o método setSequencial.');
+        $this->nossoNumero = $nossoNumero;
     }
 
     /**
