@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace OpenBoleto;
 
 use chillerlan\QRCode\{QRCode};
+use chillerlan\QRCode\{QROptions};
 
 class QrCodePix
 {
@@ -19,6 +20,9 @@ class QrCodePix
             return '';
         }
 
-        return (new QRCode())->render($qrCode);
+        $options = new QROptions([
+            'scale'         => 5,                    // Reduced from default (usually 10+)
+        ]);
+        return (new QRCode($options))->render($qrCode);
     }
 }
